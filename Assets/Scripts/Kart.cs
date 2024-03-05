@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Kart : MonoBehaviour
 {
+    Camera cam;
     Rigidbody rigid;
     [SerializeField] float speed;
-    Vector3 movedir = new Vector3(0, 0, 0);
+    [SerializeField] float rotateSpeed = 2;
 
 
     private void Awake()
@@ -18,35 +19,46 @@ public class Kart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
+        checkGravity();
         moving();
+        Debug.Log(rigid.velocity);
+    }
+
+    private void checkGravity()
+    {
+
     }
 
     private void moving()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            movedir += new Vector3(0, 0, 10) * speed;
+            //transform.position = transform.forward;
+            //rigid.velocity = transform.forward;
+
+            rigid.AddForce(transform.forward * speed);//천천히 앞으로 움직임
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-
+            rigid.AddForce(-transform.forward);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
-
+            //rigid.rotation = Quaternion.Euler(0,10,0);
+            rigid.rotation *= Quaternion.Euler(0, -0.3f, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-
+            rigid.rotation *= Quaternion.Euler(0, 0.3f, 0);
         }
     }
 }
