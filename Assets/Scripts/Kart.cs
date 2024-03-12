@@ -47,7 +47,7 @@ public class Kart : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            rigid.AddForce(-transform.forward);
+            rigid.AddForce(-transform.forward * (speed - 1f));
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
