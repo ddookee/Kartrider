@@ -25,18 +25,15 @@ public class Kart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkGravity();
         moving();
         Debug.Log(rigid.velocity);
     }
 
-    private void checkGravity()
-    {
-
-    }
 
     private void moving()
     {
+        //if(Input.GetAxisRaw("Horizontal"))
+
         if (Input.GetKey(KeyCode.UpArrow))
         {
             //transform.position = transform.forward;
