@@ -58,5 +58,30 @@ public class control : MonoBehaviour
                 ApplyLocalPositionToVisuals(axleInfo.rightWheel);
             }
         }
+
+    Rigidbody rigid;
+
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody>();
     }
+
+    private void Update()
+    {
+        drift();
+    }
+
+    private void drift()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                rigid.rotation *= Quaternion.Euler(0.0f, 0.3f, 0.0f);
+            }
+        }
+    }
+
+
+}
 
