@@ -7,8 +7,6 @@ public class Chc : MonoBehaviour
 {
     private CharacterController Chcontroller;
     [SerializeField] float speed;
-    [SerializeField] float MaxAngle;
-    private Vector3 moveDir;
 
 
 
@@ -31,10 +29,8 @@ public class Chc : MonoBehaviour
 
     private void moving()
     {
-        float motor = Input.GetAxisRaw("Vertical") * speed;
-        float angle = Input.GetAxisRaw("Horizontal") * MaxAngle;
-        moveDir = new Vector3(angle, 0f, motor);
-        Chcontroller.Move(moveDir);
+        Input.GetAxisRaw("Vertical");
+        Input.GetAxisRaw("Horizontal");
     }
 
 }
